@@ -1,0 +1,25 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: message_brokers
+  datasource:
+    url: jdbc:postgresql://localhost:5432/message_brokers
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    template:
+      exchange: task_exchange
+      routing-key: task_status_key
+      default-receive-queue: task_status_queue
